@@ -242,8 +242,15 @@ public class PokemonFrame {
 		//System.out.println(HP);
 		return HP;
 	}
-	public void levelUp() {
-
+	public void expUp(int upgrade) {
+		if(upgrade < 0) {
+			System.out.println("ERRPR: Negative exp upgrade");
+		}
+		exp += upgrade;
+		if(exp>=Math.pow(level, 2)) {
+			level++;
+			System.out.println("Player upgraded to level: " + level);
+		}
 	}
 	protected double getLevelEXP() {
 		return exp;
