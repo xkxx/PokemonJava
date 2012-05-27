@@ -52,11 +52,6 @@ public class MovementTest extends java.applet.Applet implements Runnable,MouseLi
 					Random rgen=new Random( );
 					int i=rgen.nextInt(12);
 					b.enemypokemon.add(new PokemonFrame(i));
-					if(b.playerspokemon.get(0).exp>=Math.pow(b.playerspokemon.get(0).level,2)){
-						b.playerspokemon.get(0).level += 1;
-						b.playerspokemon.get(0).exp = 0;
-						System.out.println(b.playerspokemon.get(0).level+" "+b.playerspokemon.get(0).exp+" base HP: "+b.playerspokemon.get(0).base_hp);
-					}
 				}
 				else{
 					b.play();
