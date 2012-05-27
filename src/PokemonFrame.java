@@ -16,6 +16,9 @@ public class PokemonFrame {
 	boolean fainted = false;
 	Random rgen=new Random(System.currentTimeMillis());
 	String item;
+    
+    private String[] names = {"MissingNo", "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmelion", "Charzard", "Squirtle"};
+
 	/*
 	boolean gender;
 	boolean isPlayer; //See if it is a Player or NPC
@@ -33,71 +36,11 @@ public class PokemonFrame {
 			n = 0;
 		}
 		number = n;
+        name = names[n];
 		front_image = getImage(n, "front");
 		back_image = getImage(n, "back");
 		party_image = getImage(n, "party");
-		
-		if(n==004){
-			name="Charmander";
-			ATT=2*level+2;
-			DEF = SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att = base_def = base_speed = base_spec = 2*level;
-		}
-		else if(n==001){
-			name="Bulbasaur";
-			ATT=2*level+2;
-			DEF = SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att = base_def = base_speed = base_spec = 2*level;
-		}
-		else if(n==002){
-			name="Ivysaur";
-			ATT=2*level+2;
-			DEF=2*level+3;
-			SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att = base_def = base_speed = base_spec = 2*level;
-		}
-		else if(n==003){
-			name="Venusaur";
-			ATT=2*level+2;
-			DEF=2*level+9;
-			SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att  = base_speed = base_spec = 2*level;
-			base_def=2*level+9;
-		}
-		else if(n==005){
-			name="Charmelion";
-			ATT = DEF = SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att=2*level+6+2;
-			base_def = base_speed = base_spec = 2*level;
-		}
-		else if(n==006){
-			name="Charzard";
-			ATT = DEF = SPEED = SPEC = 2*level;
-			base_hp=3*level+9;
-			base_att=2*level+6+2;
-			base_def=2*level;
-			base_speed=2*level+9;
-			base_spec=2*level;
-		}
-		else if(n==007){
-			name="Squirtle";
-			ATT = DEF = SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att=2*level+6+2;
-			base_def = base_speed = base_spec = 2*level;
-		}
-		else {//MissingNo or no pokemon number
-			name="MissingNo";
-			ATT=2*level+2;
-			DEF = SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att = base_def = base_speed = base_spec = 2*level;
-		}
+        updateSkills();
 	}
 	private Image getImage(int num, String type) {
 		String filename, path = "../Pokemon/", postfix;
@@ -237,9 +180,7 @@ public class PokemonFrame {
 			System.out.println("ERRPR: Negative exp upgrade");
 		}
 		level += upgrade;
-		
-		// update other properties too
-		base_hp = HP = 3 * level + 2;
+		updateSkills();
 	}
 	public int getHP(){
 		//System.out.println(HP);
@@ -255,6 +196,54 @@ public class PokemonFrame {
 			System.out.println("Player upgraded to level: " + level);
 		}
 	}
+    private void updateSkills() {
+        base_hp = HP = 3 * level + 2;
+        if(number == 004){
+			ATT=2*level+2;
+			DEF = SPEED = SPEC = 2*level;
+			base_att = base_def = base_speed = base_spec = 2*level;
+		}
+		else if(number == 001){
+			ATT=2*level+2;
+			DEF = SPEED = SPEC = 2*level;
+			base_att = base_def = base_speed = base_spec = 2*level;
+		}
+		else if(numeber == 002){
+			ATT=2*level+2;
+			DEF=2*level+3;
+			SPEED = SPEC = 2*level;
+			base_att = base_def = base_speed = base_spec = 2*level;
+		}
+		else if(number == 003){
+			ATT=2*level+2;
+			DEF=2*level+9;
+			SPEED = SPEC = 2*level;
+			base_att  = base_speed = base_spec = 2*level;
+			base_def=2*level+9;
+		}
+		else if(number==005){
+			ATT = DEF = SPEED = SPEC = 2*level;
+			base_att=2*level+6+2;
+			base_def = base_speed = base_spec = 2*level;
+		}
+		else if(number==006){
+			ATT = DEF = SPEED = SPEC = 2*level;
+			base_att=2*level+6+2;
+			base_def=2*level;
+			base_speed=2*level+9;
+			base_spec=2*level;
+		}
+		else if(number==007){
+			ATT = DEF = SPEED = SPEC = 2*level;
+			base_att=2*level+6+2;
+			base_def = base_speed = base_spec = 2*level;
+		}
+		else {//MissingNo or no pokemon number
+			ATT=2*level+2;
+			DEF = SPEED = SPEC = 2*level;
+			base_att = base_def = base_speed = base_spec = 2*level;
+		}
+    }
 	protected double getLevelEXP() {
 		return exp;
 	}
