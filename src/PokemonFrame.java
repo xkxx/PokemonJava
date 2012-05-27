@@ -27,12 +27,18 @@ public class PokemonFrame {
 
 	public PokemonFrame(int n){
 		//System.out.println(name+" "+n);
+		// only 1<=n<12 are implemented
+		if(1 > n || n >= 12) { // must be a bug
+			System.out.println("ERROR: Pokenmon number out of range");
+			n = 0;
+		}
 		number = n;
+		front_image = getImage(n, "front");
+		back_image = getImage(n, "back");
+		party_image = getImage(n, "party");
+		
 		if(n==004){
 			name="Charmander";
-			front_image=new ImageIcon("../Pokemon/004.png").getImage();
-			back_image=new ImageIcon("../Pokemon/004b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/004p.png").getImage();
 			ATT=2*level+2;
 			DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
@@ -40,9 +46,6 @@ public class PokemonFrame {
 		}
 		else if(n==001){
 			name="Bulbasaur";
-			front_image=new ImageIcon("../Pokemon/001.png").getImage();
-			back_image=new ImageIcon("../Pokemon/001b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/004p.png").getImage();
 			ATT=2*level+2;
 			DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
@@ -50,9 +53,6 @@ public class PokemonFrame {
 		}
 		else if(n==002){
 			name="Ivysaur";
-			front_image=new ImageIcon("../Pokemon/002.png").getImage();
-			back_image=new ImageIcon("../Pokemon/002b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/004p.png").getImage();
 			ATT=2*level+2;
 			DEF=2*level+3;
 			SPEED = SPEC = 2*level;
@@ -61,9 +61,6 @@ public class PokemonFrame {
 		}
 		else if(n==003){
 			name="Venusaur";
-			front_image=new ImageIcon("../Pokemon/003.png").getImage();
-			back_image=new ImageIcon("../Pokemon/003b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
 			ATT=2*level+2;
 			DEF=2*level+9;
 			SPEED = SPEC = 2*level;
@@ -73,9 +70,6 @@ public class PokemonFrame {
 		}
 		else if(n==005){
 			name="Charmelion";
-			front_image=new ImageIcon("../Pokemon/005.png").getImage();
-			back_image=new ImageIcon("../Pokemon/005b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
 			ATT = DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
 			base_att=2*level+6+2;
@@ -83,9 +77,6 @@ public class PokemonFrame {
 		}
 		else if(n==006){
 			name="Charzard";
-			front_image=new ImageIcon("../Pokemon/006.png").getImage();
-			back_image=new ImageIcon("../Pokemon/006b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
 			ATT = DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+9;
 			base_att=2*level+6+2;
@@ -95,35 +86,38 @@ public class PokemonFrame {
 		}
 		else if(n==007){
 			name="Squirtle";
-			front_image=new ImageIcon("../Pokemon/007.png").getImage();
-			back_image=new ImageIcon("../Pokemon/007b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
 			ATT = DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
 			base_att=2*level+6+2;
 			base_def = base_speed = base_spec = 2*level;
 		}
-		else if(n==012){//MissingNo or no pokemon number
+		else {//MissingNo or no pokemon number
 			name="MissingNo";
-			front_image=new ImageIcon("../Pokemon/000.png").getImage();
-			back_image=new ImageIcon("../Pokemon/000b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/000p.png").getImage();
-			ATT=2*level+2;
-			DEF = SPEED = SPEC = 2*level;
-			base_hp=3*level+2;
-			base_att = base_def = base_speed = base_spec = 2*level;
-		}
-		else{
-			name="MissingNo ... Bug";
-			front_image=new ImageIcon("../Pokemon/000.png").getImage();
-			back_image=new ImageIcon("../Pokemon/000b.png").getImage();
-			party_image=new ImageIcon("../Pokemon/000p.png").getImage();
 			ATT=2*level+2;
 			DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
 			base_att = base_def = base_speed = base_spec = 2*level;
 		}
 	}
+	private Image getImage(int num, String type) {
+		String filename, path = "../Pokemon/", postfix;
+		switch(type) {
+			case "front": postfix = ".png"; break;
+			case "back": postfix = "b.png"; break;
+			case "party": postfix = "p.png"; break;
+			// any other values are impossible, but we don't feel like raising a error
+			default: postfix = ".png";
+		}
+		switch(num) {
+			case >= 100: filename = path + num.toString() + postfix; break;
+			case >= 10: filename = path + "0" +num.toString() + postfix; break;
+			case >= 0: filename = path + "00" +num.toString() + postfix; break;
+			// any other values are impossible, but we don't feel like raising a error
+			default: filename = path + num.toString() + postfix;
+		}
+		return new ImageIcon(filename).getImage();
+	}
+	
 	protected void attacks(PokemonFrame p, int a, TextArea output){
 		String attackName;
 		int damage=0;
