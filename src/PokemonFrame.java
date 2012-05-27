@@ -9,7 +9,7 @@ public class PokemonFrame {
 	int base_hp,base_att,base_def,base_speed,base_spec;
 	int HP = 17,ATT,DEF,SPEED,SPEC;
 	int type;
-	int level;
+	int level = 5; // default level should be 5
 	double exp = 0;
 	//int exp;
 	int number=-1;
@@ -28,13 +28,11 @@ public class PokemonFrame {
 	public PokemonFrame(int n){
 		//System.out.println(name+" "+n);
 		number = n;
-		int l=5;
 		if(n==004){
 			name="Charmander";
 			front_image=new ImageIcon("../Pokemon/004.png").getImage();
 			back_image=new ImageIcon("../Pokemon/004b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/004p.png").getImage();
-			level=5;
 			ATT=2*level+2;
 			DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
@@ -45,7 +43,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/001.png").getImage();
 			back_image=new ImageIcon("../Pokemon/001b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/004p.png").getImage();
-			level=l;
 			ATT=2*level+2;
 			DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
@@ -56,7 +53,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/002.png").getImage();
 			back_image=new ImageIcon("../Pokemon/002b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/004p.png").getImage();
-			level=5;
 			ATT=2*level+2;
 			DEF=2*level+3;
 			SPEED = SPEC = 2*level;
@@ -68,7 +64,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/003.png").getImage();
 			back_image=new ImageIcon("../Pokemon/003b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
-			level=5;
 			ATT=2*level+2;
 			DEF=2*level+9;
 			SPEED = SPEC = 2*level;
@@ -81,7 +76,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/005.png").getImage();
 			back_image=new ImageIcon("../Pokemon/005b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
-			level=5;
 			ATT = DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
 			base_att=2*level+6+2;
@@ -92,7 +86,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/006.png").getImage();
 			back_image=new ImageIcon("../Pokemon/006b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
-			level=10;
 			ATT = DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+9;
 			base_att=2*level+6+2;
@@ -105,7 +98,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/007.png").getImage();
 			back_image=new ImageIcon("../Pokemon/007b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/003p.png").getImage();
-			level=5;
 			ATT = DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
 			base_att=2*level+6+2;
@@ -116,7 +108,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/000.png").getImage();
 			back_image=new ImageIcon("../Pokemon/000b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/000p.png").getImage();
-			level=5;
 			ATT=2*level+2;
 			DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
@@ -127,7 +118,6 @@ public class PokemonFrame {
 			front_image=new ImageIcon("../Pokemon/000.png").getImage();
 			back_image=new ImageIcon("../Pokemon/000b.png").getImage();
 			party_image=new ImageIcon("../Pokemon/000p.png").getImage();
-			level=5;
 			ATT=2*level+2;
 			DEF = SPEED = SPEC = 2*level;
 			base_hp=3*level+2;
