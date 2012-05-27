@@ -54,7 +54,7 @@ public class BattleScene {
 		}
 		if(enemypokemon.get(0).fainted==true){
 			output.add(enemypokemon.get(0).name+" has fainted.", Color.magenta);
-			playerspokemon.get(0).exp+=enemypokemon.get(0).level;
+			playerspokemon.get(0).expUp(enemypokemon.get(0).level);
 		}
 
 	}
